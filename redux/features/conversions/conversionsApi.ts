@@ -2,6 +2,7 @@ import { baseApi } from "@/redux/app/baseApi";
 import { GetConversionsResponse, IStatus } from "@/types/conversions";
 
 const conversionsApi = baseApi.injectEndpoints({
+  overrideExisting: true,
   endpoints: (builder) => ({
     // /machine/conversions
     getConversions: builder.query<GetConversionsResponse, void>({

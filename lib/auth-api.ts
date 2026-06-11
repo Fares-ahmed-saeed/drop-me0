@@ -1,7 +1,5 @@
 import axios, { isAxiosError } from "axios";
-
-export const AUTH_BASE_URL =
-  "https://recyclingapp-ochre.vercel.app/users/auth";
+import { AUTH_BASE_URL } from "@/components/constants";
 
 const authClient = axios.create({
   baseURL: AUTH_BASE_URL,
@@ -29,8 +27,26 @@ export interface SignupPayload {
 
 export interface AuthResponse {
   token?: string;
+  accessToken?: string;
   message?: string;
   role?: "user" | "admin";
+}
+
+export function extractAuthToken(
+  response: AuthResponse & Record<string, unknown>,
+): string | null {
+  if (typeof response.token === "string") return response.token;
+  if (typeof response.accessToken === "string") return response.accessToken;
+  if (typeof response.jwt === "string") return response.jwt;
+
+  const nested = response.data;
+  if (nested && typeof nested === "object") {
+    const data = nested as Record<string, unknown>;
+    if (typeof data.token === "string") return data.token;
+    if (typeof data.accessToken === "string") return data.accessToken;
+  }
+
+  return null;
 }
 
 export function getAuthErrorMessage(error: unknown): string {

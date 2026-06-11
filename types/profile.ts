@@ -8,7 +8,8 @@ export interface User {
   fName: string;
   lName: string;
   email: string;
-  password: string;
+  password?: string;
+  phone?: string;
   country: string;
   gender: string;
   dateOfBirth: string;
@@ -17,7 +18,7 @@ export interface User {
   role: string;
   createdAt: string;
   updatedAt: string;
-  __v: number;
+  __v?: number;
   fullName: string;
   id: string;
 }
@@ -25,6 +26,40 @@ export interface User {
 export interface IUserPoints {
   points: number;
   balance: number;
+}
+
+export interface UserTransaction {
+  _id: string;
+  id: string;
+  userId: string;
+  materialType: string;
+  weight: number;
+  pointsEarned: number;
+  type: "earn" | "spend";
+  createdAt: string;
+  updatedAt: string;
+  __v?: number;
+}
+
+export interface IUserTransactionsResponse {
+  transactions: UserTransaction[];
+}
+
+export interface UserConversion {
+  _id: string;
+  id: string;
+  userId: string;
+  pointsUsed: number;
+  moneyAdded: number;
+  status: "pending" | "sent" | "rejected" | string;
+  method?: "instapay" | "wallet";
+  createdAt: string;
+  updatedAt: string;
+  __v?: number;
+}
+
+export interface IUserConversionsResponse {
+  conversions: UserConversion[];
 }
 
 export interface IConvertPointsResponse {

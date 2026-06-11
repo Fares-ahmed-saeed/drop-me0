@@ -3,6 +3,7 @@ import { LoginDTO, SignUpDTO, AuthResponse } from "@/types/auth";
 import { setUser } from "./authSlice";
 
 const authApi = baseApi.injectEndpoints({
+  overrideExisting: true,
   endpoints: (builder) => ({
     // Login
     login: builder.mutation<AuthResponse, LoginDTO>({

@@ -9,7 +9,13 @@ import { Button } from "@/components/ui/button";
 import AuthLayout from "@/components/layouts/authLayout";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { getAuthErrorMessage, loginUser } from "@/lib/auth-api";
+import {
+  extractAuthToken,
+  getAuthErrorMessage,
+  loginUser,
+} from "@/lib/auth-api";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/features/auth/authSlice";
 
 const LoginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -23,6 +29,7 @@ type FormData = z.infer<typeof LoginSchema>;
 function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const methods = useForm<FormData>({
     resolver: zodResolver(LoginSchema),
@@ -43,13 +50,19 @@ function LoginPage() {
         password: data.password,
       });
 
-      const token = response.token;
+      const token = extractAuthToken(response);
 
       if (!token) {
         throw new Error(response.message || "Login failed. No token received.");
       }
 
-      localStorage.setItem("token", token);
+      dispatch(
+        setUser({
+          token,
+          role: response.role === "admin" ? "admin" : "user",
+        }),
+      );
+
       toast.success("Logged in successfully!");
       router.push("/");
     } catch (error) {

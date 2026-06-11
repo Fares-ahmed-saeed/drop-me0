@@ -3,6 +3,7 @@ import { IUser } from "@/types/profile";
 import { ICreate, IUsersResponse } from "@/types/users";
 
 const usersApi = baseApi.injectEndpoints({
+  overrideExisting: true,
   endpoints: (builder) => ({
     // get all users By admin
     getAllUser: builder.query<IUsersResponse, void>({

@@ -2,6 +2,7 @@ import { baseApi } from "@/redux/app/baseApi";
 import { IConvertPointsResponse, IUser, IUserPoints } from "@/types/profile";
 
 const profileApi = baseApi.injectEndpoints({
+  overrideExisting: true,
   endpoints: (builder) => ({
     // get user by id
     getUser: builder.query<IUser, void>({

@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { Leaf } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -54,33 +53,14 @@ export function OffersBanner() {
         <CarouselContent>
           {OFFER_SLIDES.map((slide) => (
             <CarouselItem key={slide.id}>
-              <div className="bg-secondary rounded-3xl overflow-hidden flex flex-col md:flex-row min-h-[220px]">
-                <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Leaf className="w-5 h-5 text-white" />
-                    <span className="text-white font-serif text-xl font-bold">
-                      {slide.title}
-                    </span>
-                  </div>
-                  <ul className="space-y-1">
-                    {slide.tiers.map((tier, index) => (
-                      <li
-                        key={index}
-                        className="text-white/90 text-sm md:text-base"
-                      >
-                        {tier.points} Points – {tier.discount}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="relative w-full md:w-72 lg:w-80 h-48 md:h-auto shrink-0">
-                  <Image
-                    src={slide.image}
-                    alt={slide.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              <div className="relative w-full aspect-[16/7] md:aspect-[21/8] rounded-3xl overflow-hidden">
+                <Image
+                  src={slide.image}
+                  alt={slide.title}
+                  fill
+                  className="object-cover"
+                  priority={slide.id === 1}
+                />
               </div>
             </CarouselItem>
           ))}

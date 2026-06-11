@@ -7,13 +7,13 @@ import Link from "next/link";
 
 const HERO_IMAGES = [
   {
-    url: "/hero1.jpg",
+    url: "/drop-me-hero-1.png",
   },
   {
-    url: "/hero2.jpg",
+    url: "/drop-me-hero-2.png",
   },
   {
-    url: "/hero3.jpg",
+    url: "/drop-me-hero-3.png",
   },
 ];
 

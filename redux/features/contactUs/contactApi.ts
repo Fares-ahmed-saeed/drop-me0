@@ -2,6 +2,7 @@ import { baseApi } from "@/redux/app/baseApi";
 import { GetContactsResponse } from "@/types/contactUs";
 
 const contactApi = baseApi.injectEndpoints({
+  overrideExisting: true,
   endpoints: (builder) => ({
     sendContactMessage: builder.mutation<
       void,

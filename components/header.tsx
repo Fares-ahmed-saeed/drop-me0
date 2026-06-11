@@ -14,7 +14,7 @@ const navItems = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Recycle", href: "/recycle" },
-  { name: "Products", href: "/products" },
+  { name: "Products", href: "/products", authOnly: true },
   { name: "Rewards", href: "/rewards", authOnly: true },
   { name: "Contact Us", href: "/contact" },
 ];
@@ -26,10 +26,10 @@ export function Header() {
 
   const logout = useLogout();
 
-  // Check token from cookies on client
+  // Check token from storage on client
   useEffect(() => {
     setToken(getStoredToken());
-  }, []);
+  }, [pathname]);
 
   const filteredNavItems = navItems.filter(
     (item) => !item.authOnly || (item.authOnly && token),

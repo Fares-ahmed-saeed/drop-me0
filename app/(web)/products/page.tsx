@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, Filter, Recycle, Search, Trophy } from "lucide-react";
 import { getStoredToken } from "@/lib/auth-token";
 import { useGetUserPointsQuery } from "@/redux/features/profile/profileApi";
@@ -14,13 +15,25 @@ import {
 } from "@/lib/products-data";
 
 export default function ProductsPage() {
+  const router = useRouter();
+  const [authReady, setAuthReady] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<
     "All" | ProductCategory
   >("All");
   const [wishlist, setWishlist] = useState<number[]>([]);
 
-  const token = getStoredToken();
+  useEffect(() => {
+    const storedToken = getStoredToken();
+    setToken(storedToken);
+    setAuthReady(true);
+
+    if (!storedToken) {
+      router.replace("/login");
+    }
+  }, [router]);
+
   const { data: userData } = useGetUserPointsQuery(undefined, {
     skip: !token,
   });
@@ -43,6 +56,14 @@ export default function ProductsPage() {
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
     );
   };
+
+  if (!authReady || !token) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh] text-muted">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
