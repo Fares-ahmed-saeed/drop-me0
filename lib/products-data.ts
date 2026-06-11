@@ -1,0 +1,230 @@
+export type ProductCategory = "Accessories" | "Beauty" | "Bags" | "Home";
+
+export interface Product {
+  id: number;
+  name: string;
+  category: ProductCategory;
+  price: number;
+  originalPrice: number;
+  rating: number;
+  discount: number;
+  image: string;
+}
+
+export const CATEGORIES: Array<"All" | ProductCategory> = [
+  "All",
+  "Accessories",
+  "Beauty",
+  "Bags",
+  "Home",
+];
+
+export const OFFER_SLIDES = [
+  {
+    id: 1,
+    title: "EcoStore",
+    tiers: [
+      { points: 250, discount: "8%" },
+      { points: 250, discount: "12%" },
+      { points: 350, discount: "18%" },
+      { points: 500, discount: "25%" },
+    ],
+    image: "/eco-innovation-recycled-products.jpg",
+  },
+  {
+    id: 2,
+    title: "Green Rewards",
+    tiers: [
+      { points: 100, discount: "5%" },
+      { points: 200, discount: "10%" },
+      { points: 300, discount: "15%" },
+      { points: 400, discount: "20%" },
+    ],
+    image: "/recycling-warehouse-welcome.jpg",
+  },
+  {
+    id: 3,
+    title: "Recycle & Save",
+    tiers: [
+      { points: 150, discount: "7%" },
+      { points: 250, discount: "12%" },
+      { points: 400, discount: "18%" },
+      { points: 600, discount: "30%" },
+    ],
+    image: "/plastic-recycling-program.png",
+  },
+  {
+    id: 4,
+    title: "Eco Deals",
+    tiers: [
+      { points: 200, discount: "10%" },
+      { points: 300, discount: "14%" },
+      { points: 450, discount: "20%" },
+      { points: 700, discount: "35%" },
+    ],
+    image: "/eco-friendly-environment.jpg",
+  },
+];
+
+export const PRODUCTS: Product[] = [
+  {
+    id: 1,
+    name: "Handmade Necklace",
+    category: "Accessories",
+    price: 437,
+    originalPrice: 460,
+    rating: 4.5,
+    discount: 5,
+    image: "/hero1.jpg",
+  },
+  {
+    id: 2,
+    name: "Hair Care Cream",
+    category: "Beauty",
+    price: 285,
+    originalPrice: 317,
+    rating: 4.3,
+    discount: 10,
+    image: "/hero2.jpg",
+  },
+  {
+    id: 3,
+    name: "Woven Tote Bag",
+    category: "Bags",
+    price: 520,
+    originalPrice: 578,
+    rating: 4.7,
+    discount: 10,
+    image: "/eco-innovation-recycled-products.jpg",
+  },
+  {
+    id: 4,
+    name: "Eco Shoulder Bag",
+    category: "Bags",
+    price: 390,
+    originalPrice: 411,
+    rating: 4.4,
+    discount: 5,
+    image: "/hero3.jpg",
+  },
+  {
+    id: 5,
+    name: "Recycled Bracelet",
+    category: "Accessories",
+    price: 175,
+    originalPrice: 194,
+    rating: 4.2,
+    discount: 10,
+    image: "/try.jpeg",
+  },
+  {
+    id: 6,
+    name: "Natural Skincare Set",
+    category: "Beauty",
+    price: 640,
+    originalPrice: 711,
+    rating: 4.8,
+    discount: 10,
+    image: "/people-recycling-together.jpg",
+  },
+  {
+    id: 7,
+    name: "Bamboo Water Bottle",
+    category: "Home",
+    price: 310,
+    originalPrice: 326,
+    rating: 4.6,
+    discount: 5,
+    image: "/eco-friendly-environment.jpg",
+  },
+  {
+    id: 8,
+    name: "Organic Face Serum",
+    category: "Beauty",
+    price: 425,
+    originalPrice: 472,
+    rating: 4.5,
+    discount: 10,
+    image: "/education-recycling-awareness.jpg",
+  },
+  {
+    id: 9,
+    name: "Recycled Earrings",
+    category: "Accessories",
+    price: 198,
+    originalPrice: 220,
+    rating: 4.1,
+    discount: 10,
+    image: "/community-collecting-plastic-bottles.jpg",
+  },
+  {
+    id: 10,
+    name: "Cotton Shopping Bag",
+    category: "Bags",
+    price: 245,
+    originalPrice: 258,
+    rating: 4.3,
+    discount: 5,
+    image: "/recycling-warehouse-with-bottles.jpg",
+  },
+  {
+    id: 11,
+    name: "Bamboo Cutlery Set",
+    category: "Home",
+    price: 165,
+    originalPrice: 183,
+    rating: 4.4,
+    discount: 10,
+    image: "/recycling-machine-with-bottles.jpg",
+  },
+  {
+    id: 12,
+    name: "Herbal Body Lotion",
+    category: "Beauty",
+    price: 295,
+    originalPrice: 328,
+    rating: 4.6,
+    discount: 10,
+    image: "/pepole.jpeg",
+  },
+  {
+    id: 13,
+    name: "Recycled Glass Vase",
+    category: "Home",
+    price: 380,
+    originalPrice: 400,
+    rating: 4.5,
+    discount: 5,
+    image: "/team-presentation-recycling-event.jpg",
+  },
+  {
+    id: 14,
+    name: "Eco Leather Wallet",
+    category: "Accessories",
+    price: 340,
+    originalPrice: 378,
+    rating: 4.2,
+    discount: 10,
+    image: "/machint-1.jpG.png",
+  },
+  {
+    id: 15,
+    name: "Recycled Backpack",
+    category: "Bags",
+    price: 580,
+    originalPrice: 645,
+    rating: 4.7,
+    discount: 10,
+    image: "/plastic-recycling-program.png",
+  },
+  {
+    id: 16,
+    name: "Plant Fiber Basket",
+    category: "Home",
+    price: 220,
+    originalPrice: 231,
+    rating: 4.3,
+    discount: 5,
+    image: "/child.jpeg",
+  },
+];
